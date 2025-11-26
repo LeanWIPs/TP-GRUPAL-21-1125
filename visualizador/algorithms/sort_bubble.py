@@ -29,11 +29,7 @@ def step():
     if(j+1 == n-i-0): #j+1 == n-i-2 habia puesto asi pero los ultimos 2 no se ordenaban
         j=0      
         i+=1 
+    if(i==n-1):
+        resultado={"done": True}
     return resultado
-    # TODO:
-    # 1) Elegir índices a y b a comparar en este micro-paso (según tu Bubble).
-    # 2) Si corresponde, hacer el intercambio real en items[a], items[b] y marcar swap=True.
-    # 3) Avanzar punteros (preparar el próximo paso).
-    # 4) Devolver {"a": a, "b": b, "swap": swap, "done": False}.
-    #
-    # Cuando no queden pasos, devolvé {"done": True}.
+
