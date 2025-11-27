@@ -1,21 +1,37 @@
-# Template genérico — SKELETON
-# Contrato: init(vals), step() -> {"a": int, "b": int, "swap": bool, "done": bool}
+items = []   # lista de números
+n = 0        # tamaño
+# variables del algoritmo
+i = j = None
 
-items = []
-n = 0
-# Agregá acá tus punteros/estado, p.ej.:
-# i = 0; j = 0; fase = "x"; stack = []
 
 def init(vals):
-    global items, n
+    global items, n, i, j
     items = list(vals)
     n = len(items)
-    # TODO: inicializar punteros/estado
+    i = 0
+    j = 1   
+
 
 def step():
-    # TODO: implementar UN micro-paso de tu algoritmo y devolver el dict.
-    # Recordá:
-    # - a, b dentro de [0, n-1]
-    # - si swap=True, primero hacé el intercambio en 'items'
-    # - cuando termines, devolvé {"done": True}
-    return {"done": True}
+    
+
+    global items, n, i, j
+    # finalización
+    if i >= n - 1:
+        return {"a": -1, "b": -1, "swap": False, "done": True}
+
+    # comparar items[i] con items[j]
+    if items[i] > items[j]:
+        # swap real
+        items[i], items[j] = items[j], items[i]
+        resultado = {"a": i, "b": j, "swap": True, "done": False}
+    else:
+        resultado = {"a": i, "b": j, "swap": False, "done": False}
+
+    # avanza punteros 
+    j += 1
+    if j >= n:
+        i += 1
+        j = i + 1
+
+    return resultado
